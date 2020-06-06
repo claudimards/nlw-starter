@@ -6,10 +6,10 @@ function listarEstados() {
      .then( (resposta) => { return resposta.json() } )
      .then( (estados) => {
          for( estado of estados ){
-             // usar acentuação "CRAZE" para poder usar formatar dados dentro de tags html
-            estadoSelecionado.innerHTML += `<option value="${estado.id}">${estado.sigla} - ${estado.nome}</option>`
-         }
-     } )
+             // usar acentuação "CRAZE" para poder usar formatação de dados dentro de tags html
+            estadoSelecionado.innerHTML += `<option value="${estado.id}">${estado.nome}</option>`
+        }
+    } )
 }
 
 //chamando a função de listar estados
@@ -65,6 +65,8 @@ function tratarItemSelecionado(evento){
 
     const itemId = itemLi.dataset.id
 
+    //console.log("ITEM ID: ", itemId)
+
     // verificar se exitem itens selecionados, se sim
     // pegar os itens selecionados
     const jaSelecionados = itensSelecionados.findIndex( (item) => {
@@ -84,6 +86,7 @@ function tratarItemSelecionado(evento){
     }else{ // se o item não estiver selecionado, adicionar a seleção
         itensSelecionados.push( itemId )
     }
+    //console.log("Itens selecionados: ", itensSelecionados)
     // atualizar o iput hidden no html
     itensColetados.value = itensSelecionados
 }
